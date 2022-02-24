@@ -1,5 +1,12 @@
 package com.example.calculoimc
 
+ lateinit var nomeEditText : EditText
+ lateinit var pesoEditText: EditText
+ lateinit var alturaEditText: EditText
+
+
+
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -11,25 +18,43 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val nome = findViewById<EditText>(R.id.nome)
+
         val calcular = findViewById<Button>(R.id.calcular)
 
         calcular.setOnClickListener {
-            val peso = findViewById<EditText>(R.id.peso).text.toString().toDouble()
-            val altura = findViewById<EditText>(R.id.altura).text.toString().toDouble()
-            val resultado = findViewById<TextView>(R.id.resultado)
 
-            val imc =  peso / (altura * altura)
+            nomeEditText = findViewById(R.id.nome)
+            pesoEditText = findViewById(R.id.peso)
+            alturaEditText = findViewById(R.id.altura)
 
-            if (imc <= 18){
-                resultado.text = "Você esta abaixo do peso " + "${imc}"
-            }else if (imc <=24){
-                resultado.text = "Voce esta dentro do peso" + "${imc}"
-            }
+
+
+
+
 
 
         }
 
+        validarCampo()
+
+    }
+
+    private fun validarCampo(): Boolean {
+        var noError = true
+
+        if (nomeEditText.text.isBlank()){
+            nomeEditText.setError("Digite o seu nome")
+            noError = false
+        }
+        if (alturaEditText.text.isBlank()){
+            alturaEditText.setError("Digite a sua altura")
+            noError = false
+        }
+        if (pesoEditText.text.isBlank()){
+            pesoEditText.setError("Digite o seu peso")
+            noError = false
+        }
+        return noError
 
     }
 }

@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CalculoImc">
         <activity
+            android:name=".RelatorioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RelatorioActive"
+            android:exported="false" />
+        <activity
+            android:name=".RelatorioActiby"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
